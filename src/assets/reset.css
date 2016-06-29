@@ -19,9 +19,6 @@ time, mark, audio, video {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -29,7 +26,8 @@ footer, header, hgroup, menu, nav, section {
     display: block;
 }
 body {
-    line-height: 1;
+    font-family: "PingFang SC","苹方","Hiragino Sans GB","Microsoft Yahei","微软雅黑", "Microsoft Yahei UI", 'Segoe UI', Tahoma,SimSun, sans-serif;
+
 }
 ol, ul {
     list-style: none;

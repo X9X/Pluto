@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
         <ul>
-            <li v-for="item in navList"><a href="/" @click="linkTo()">{{item.linkName}}</a></li>
+            <li v-for="item in navList"><a v-link="index">{{item.linkName}}</a></a></li>
         </ul>
     </div>
 </template>
@@ -9,7 +9,7 @@
     .nav {
         display: inline-block;
         width: 200px;
-        background-color: #333333;
+        background-color: rgba(51,51,51,0.75);
         font-size: 16px;
         position: fixed;
         z-index: 1000;
@@ -21,17 +21,24 @@
         width: 100%;
     }
     .nav ul li {
+        border-radius: 2px;
         list-style: none;
         display:block;
         width: 100%;
         text-align: center;
-        padding: 20px 0;
+        height: 60px;
+        line-height: 60px;
     }
     .nav ul li a{
+        display: inline-block;
+        width:100%;
+        height:100%;
+        text-decoration: none;
         color:#ffffff;
     }
     .nav ul li:hover{
-        background-color: #42b983;
+        text-decoration: none;
+        background-color: rgba(66,185,131,0.75);
     }
 </style>
 <script>
