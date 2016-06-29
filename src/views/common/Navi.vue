@@ -1,7 +1,7 @@
 <template>
     <div class="nav">
         <ul>
-            <li v-for="item in navList"><a v-link="index">{{item.linkName}}</a></a></li>
+            <li v-for="item in navList"><a v-link="item.url">{{item.linkName}}</a></a></li>
         </ul>
     </div>
 </template>
@@ -36,6 +36,9 @@
         text-decoration: none;
         color:#ffffff;
     }
+    .nav ul li a.v-link-active{
+        background-color: #42b983;
+    }
     .nav ul li:hover{
         text-decoration: none;
         background-color: rgba(66,185,131,0.75);
@@ -49,7 +52,11 @@ export default {
       // with hot-reload because the reloaded component
       // preserves its current state and we are modifying
       // its initial state.
-      navList: [{linkName: '首页'}, {linkName: '列表'}, {linkName: '发现'}]
+      navList: [
+        {linkName: '首页',url:'/index'},
+        {linkName: '列表',url:'/list'},
+        {linkName: '发现',url:'/discovery'}
+        ]
     }
   },
   methods () {

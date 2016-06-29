@@ -8,12 +8,15 @@ const router = new VueRouter({
 })
 
 router.map({
-    '/': {
+    '/index': {
         name: 'index',
         component: (resolve) => {
             require(['../views/index/Hello.vue'], resolve)
         }
     }
+});
+router.alias({
+  '/': '/index',
 })
 
 export default router
