@@ -38,9 +38,10 @@
     }
     .nav ul li a.v-link-active{
         background-color: #42b983;
-        animation: rubberBand 0.5s ease 0s;
-        animation-direction:alternate;
+        animation: rubberBand 1s ease 0s;
     }
+
+
     @keyframes rubberBand {
       from {
         transform: scale3d(1, 1, 1);
@@ -70,10 +71,6 @@
         transform: scale3d(1, 1, 1);
       }
     }
-
-.fadeInDown {
-  animation-name: fadeInDown;
-}
 </style>
 <script>
 export default {
