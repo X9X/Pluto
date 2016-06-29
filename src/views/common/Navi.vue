@@ -38,11 +38,42 @@
     }
     .nav ul li a.v-link-active{
         background-color: #42b983;
+        animation: rubberBand 0.5s ease 0s;
+        animation-direction:alternate;
     }
-    .nav ul li:hover{
-        text-decoration: none;
-        background-color: rgba(66,185,131,0.75);
+    @keyframes rubberBand {
+      from {
+        transform: scale3d(1, 1, 1);
+      }
+
+      30% {
+        transform: scale3d(1.25, 0.75, 1);
+      }
+
+      40% {
+        transform: scale3d(0.75, 1.25, 1);
+      }
+
+      50% {
+        transform: scale3d(1.15, 0.85, 1);
+      }
+
+      65% {
+        transform: scale3d(.95, 1.05, 1);
+      }
+
+      75% {
+        transform: scale3d(1.05, .95, 1);
+      }
+
+      to {
+        transform: scale3d(1, 1, 1);
+      }
     }
+
+.fadeInDown {
+  animation-name: fadeInDown;
+}
 </style>
 <script>
 export default {
