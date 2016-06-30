@@ -41,7 +41,6 @@
         animation: rubberBand 1s ease 0s;
     }
 
-
     @keyframes rubberBand {
       from {
         transform: scale3d(1, 1, 1);
