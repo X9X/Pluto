@@ -1,15 +1,33 @@
-<style type="text/css" src="../../assets/reset.css"></style>
 <template>
-  <navi></navi>
-  <router-view></router-view>
+  <div class="container">
+    <h1>{{ msg }}</h1>
+  </div>
 </template>
 
 <script>
-import Navi from '../common/Navi'
-
 export default {
-  components: {
-    Navi
+  data () {
+    return {
+      msg: 'So long, Solar...'
+    }
   }
 }
 </script>
+
+<style scoped>
+h1 {
+  color: #42b983;
+}
+.container{
+    background: url('../../assets/main.jpg') no-repeat;
+    background-size:100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom:0;
+}
+</style>
