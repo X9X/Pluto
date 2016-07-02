@@ -29,7 +29,7 @@ router.map({
     },
     '/404' : {
         component : (resolve) => {
-            require(['../views/404/404.vue'],resolve)
+            require(['../views/common/404.vue'],resolve)
         }
     }
 });

@@ -1,15 +1,15 @@
-<style type="text/css" src="../../assets/reset.css"></style>
 <template>
-  <navi></navi>
-  <router-view></router-view>
+    <top></top>
+    <search><search>
 </template>
-
-<script>
-import Navi from '../common/Navi'
-
-export default {
-  components: {
-    Navi
-  }
-}
+<style type="text/css"></style>
+<script type="text/javascript">
+    import Search from './search'
+    import Top from '../common/top'
+    export default {
+        components : {
+            Search,
+            Top
+        }
+    }
 </script>

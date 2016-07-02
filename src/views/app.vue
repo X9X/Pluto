@@ -3,9 +3,8 @@
   <navi></navi>
   <router-view></router-view>
 </template>
-
 <script>
-import Navi from './common/Navi'
+import Navi from './common/navi'
 
 export default {
   components: {
