@@ -1,14 +1,14 @@
 <style type="text/css" src="../assets/reset.css"></style>
 <template>
-  <navi></navi>
+  <!-- <top></top> -->
   <router-view></router-view>
 </template>
 <script>
-import Navi from './common/navi'
+// import Top from './common/top'
 
-export default {
-  components: {
-    Navi
-  }
-}
+// export default {
+//   components: {
+//     Top
+//   }
+// }
 </script>

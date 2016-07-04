@@ -2,7 +2,7 @@
 <div class="search-box">
     <div class="search">
         <div class="input-box">
-            <input type="text" placeholder="请输入区域、板块或楼盘名" class="search-input" v-model="search">
+            <input type="text" placeholder="请输入区域、板块或楼盘名" class="search-input">
             <button type="button"><i></i></button>
             <ul class="think-list">
                 <li v-for="item in hot_list" v-on:click="setKeyword(item.showName)" v-bind:class="highLight($index)">

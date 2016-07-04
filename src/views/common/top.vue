@@ -2,39 +2,16 @@
     <header class="lianjia-header lianjia-header-xinfang">
         <div>
             <ul>
-                <li class="index-page-link hide"><a href="http://sh.lianjia.com/">首页</a></li>
-                <li class="hover">
-                    <a class="" href="http://sh.lianjia.com/ershoufang/">
-                        二手房
-                    </a>
+                <li>
+                    <a v-link="'/index'">首页</a>
                 </li>
                 <li>
-                    <a class="on" href="http://sh.fang.lianjia.com/">
+                    <a  v-link="'/list'">
                         新房
                     </a>
                 </li>
                 <li>
-                    <a rel="nofollow" class="" href="http://sh.lianjia.com/zufang" target="_blank">
-                        租房
-                    </a>
-                </li>
-                <li>
-                    <a class="" href="http://sh.lianjia.com/xiaoqu/" target="_blank">
-                        小区
-                    </a>
-                </li>
-                <li>
-                    <a rel="nofollow" class="" href="https://licai.lianjia.com/" target="_blank">
-                        理财
-                    </a>
-                </li>
-                <li class="hover">
-                    <a rel="nofollow" class="" href="http://sh.lianjia.com/client/" target="_blank">
-                        APP下载
-                    </a>
-                </li>
-                <li>
-                    <a rel="nofollow" class="" href="http://sh.lianjia.com/yezhu/" target="_blank">
+                    <a v-link="'/discovery'" target="_blank">
                         卖房
                     </a>
                 </li>
@@ -62,7 +39,8 @@
     header {
         background-color: #ececec;
         font-size: 12px;
-        width: 100%
+        width: 100%;
+        z-index: 9999;
     }
     header div{
         margin:0 auto;
@@ -141,6 +119,42 @@
     }
     .right{
         color:#39AC6A;
+    }
+
+
+    .nav ul li a.v-link-active{
+        background-color: #42b983;
+        animation: rubberBand 1s ease 0s;
+    }
+
+    @keyframes rubberBand {
+      from {
+        transform: scale3d(1, 1, 1);
+      }
+
+      30% {
+        transform: scale3d(1.25, 0.75, 1);
+      }
+
+      40% {
+        transform: scale3d(0.75, 1.25, 1);
+      }
+
+      50% {
+        transform: scale3d(1.15, 0.85, 1);
+      }
+
+      65% {
+        transform: scale3d(.95, 1.05, 1);
+      }
+
+      75% {
+        transform: scale3d(1.05, .95, 1);
+      }
+
+      to {
+        transform: scale3d(1, 1, 1);
+      }
     }
 </style>
 <script type="text/javascript">
