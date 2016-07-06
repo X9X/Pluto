@@ -80,6 +80,7 @@
         vertical-align: middle;
     }
     a.logo{
+        vertical-align: middle;
         display: inline-block;
         height: 33px;
         width: 223px;
