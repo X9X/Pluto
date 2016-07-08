@@ -11,15 +11,15 @@
                     </a>
                 </li>
                 <li>
-                    <a v-link="'/discovery'" target="_blank">
-                        卖房
+                    <a v-link="'/discovery'">
+                        发现
                     </a>
                 </li>
             </ul>
             <ul class="login">
                 <li>131****1315</li>
                 <li>
-                    <a class="reg" href="http://user.sh.lianjia.com/locallogout?service=http%253A%252F%252Fxinfang.dooioo.com%252Flist">退出</a>
+                    <a v-link="'/404'">退出</a>
                 </li>
             </ul>
         </div>

@@ -1,9 +1,9 @@
 <template>
     <div class="activity-container">
         <div class="activity-box">
-            <div class="activity" v-for="i in [1,2,3,4]">
+            <div class="activity">
                 <a href="">
-                    <img src="../../assets/404.jpg">
+                    <img src="">
                 </a>
             </div>
         </div>
@@ -11,23 +11,17 @@
 </template>
 <style type="text/css" scoped>
     .activity-container{
-        margin-top:20px;
         background-color: #edeef1;
     }
     .activity-container .activity-box{
-        width:1000px;
+        width:1030px;
         margin:0 auto;
-        padding: 20px 0;
     }
     .activity-container .activity-box a{
-        width:250px;
-        display: inline-block;
-    }
-    .activity-container .activity{
         display: inline-block;
     }
     .activity-container .activity-box a img{
-        display: inline-block;
+        width:25%;
         box-sizing: border-box;
         height: 130px;
     }
@@ -35,7 +29,7 @@
 <script type="text/javascript">
     export default {
         data (){
-            return {}
+
         }
     }
 </script>

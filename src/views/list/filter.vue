@@ -1,71 +1,52 @@
 <template>
-    <div class="filter-box" v-on:mouseenter="showList()" v-on:mouseleave="hideList()">
-        <a href="javascript:;" class="filter {{field}} {{active}}" >
-            <span>{{filtered}}</span>
-        </a>
-        <div class="info-list" v-show="show">
-            <ul>
-                <li  v-on:click="setParam(null)">全部\</li>
-                <li v-for="item in items" v-on:click="setParam(item)">{{item.text}}</li>
-            </ul>
+    <section>
+        <div class="filter-box">
+            <div class="breadcrumb">
+                <span>上海链家网 > 上海新房</span>
+            </div>
+            <field name="区域" field="district" :items="conditions.district"></field>
+            <field name="地铁" field="metro" :items="conditions.metro"></field>
+            <field name="房型" field="room" :items="conditions.room"></field>
+            <field name="总价" field="price" :items="conditions.price"></field>
+            <field name="类型" field="pro" :items="conditions.pro"></field>
         </div>
-    </div>
+    </section>
 </template>
-<script>
+<style type="text/css" scoped>
+    section{
+        font-size: 12px;
+        margin-top: 20px;
+        height: 200px;
+    }
+    .filter-box{
+        margin:0 auto;
+        width:1000px;
+        background-color: #fff;
+    }
+    .filter-box .breadcrumb{
+        margin-bottom: 35px;
+        padding:10px 0;
+        color:#555555;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+</style>
+<script type="text/javascript">
+import Field from './field'
 export default {
-    props () {
-        return ['items', 'field', 'name']
-    },
-    data () {
+    data (){
         return {
-            'active': '',
-            'show': false,
-            'filtered': this.name
-        }
-    },
-    methods() {
-        return {
-            showList: function () {
-                this.show = true;
-                this.active = 'active';
-            },
-            hideList:function () {
-                this.show = false;
-                this.active = (this.filtered == this.name ? '' : 'active');
-            },
-            setParam: function (item) {
-                var param = {
-                    name : item ? item.text : null,
-                    key: this.field,
-                    value: item ? item.value : null
-                };
-                this.filtered = item ? item.text : this.name;
-                this.active = item ? 'active' : '';
-                this.show = false;
-                this.$dispatch('setCondition', param);
-            },
-            clearParam:function () {
-                this.setParam({key:this.field,value:null,name:null});
-                this.hideList();
-                this.filtered = this.name;
-                this.active = "";
+            conditions : {
+                district : ['浦东', '嘉定', '松江', '宝山' ,'闵行', '青浦', '普陀', '徐汇', '杨浦', '闸北', '黄浦', '奉贤', '长宁', '虹口', '静安', '金山', '崇明', '上海周边'],
+                metro : ['1号线', '2号线', '3号线', '4号线', '5号线', '6号线', '7号线', '8号线', '9号线', '10号线', '11号线', '12号线', '13号线', '16号线', '17号线', '18号线'],
+                room : ['一室', '二室', '三室', '四室', '五室', '五室以上'],
+                price : ['100万以下', '100-150万', '150-200万', '200-300万', '300-500万', '500-800万', '800-1000万', '1000万以上'],
+                pro : ['住宅', '别墅','商住']
             }
         }
     },
-    events () {
-        return {
-            clearFilter:function (param) {
-                if (param && param == this.field){
-                    this.clearParam();
-                } else if(param == 'all'){
-                    this.filtered = this.name;
-                    this.active = '';
-                }
-            }
-        }
+    components:{
+        Field
     }
 }
 </script>
-<style type="text/css" scoped>
-
-</style>

@@ -1,23 +1,23 @@
 <template>
-<div class="search-box">
-    <div class="search">
-        <div class="input-box">
-            <input type="text" placeholder="请输入区域、板块或楼盘名" class="search-input">
-            <button type="button"><i></i></button>
-            <ul class="think-list">
-                <li v-for="item in hot_list" v-on:click="setKeyword(item.showName)" v-bind:class="highLight($index)">
-                    <span class="name-span">{{{item.showName}}}</span>
-                </li>
-            </ul>
-            <span class="history">
-                <span class="history-name">历史搜索：</span>
-            </span>
-            <span class="history-list"></span>
+    <div class="search-box">
+        <div class="search">
+            <div class="input-box">
+                <input type="text" placeholder="请输入区域、板块或楼盘名" class="search-input">
+                <button type="button"><i></i></button>
+                <ul class="think-list">
+                    <li v-for="item in hot_list" v-on:click="setKeyword(item.showName)" v-bind:class="highLight($index)">
+                        <span class="name-span">{{{item.showName}}}</span>
+                    </li>
+                </ul>
+                <span class="history">
+                    <span class="history-name">历史搜索：</span>
+                </span>
+                <span class="history-list"></span>
+            </div>
+            <!-- <div class="bar"></div> -->
         </div>
-        <!-- <filter></filter> -->
-        <!-- <div class="bar"></div> -->
     </div>
-</div>
+    <filter></filter>
 </template>
 <style type="text/css" scoped>
     .search-box{
@@ -49,7 +49,6 @@
         vertical-align: middle;
     }
     .think-list{
-        /*display: inline-block;*/
         position: absolute;
     }
     .search-input{
@@ -57,7 +56,6 @@
         line-height: 36px;
         width:371px;
         font-size: 14px;
-        /*margin:10px auto;*/
         outline: none;
         text-indent: 15px;
         vertical-align: middle;

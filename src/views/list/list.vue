@@ -1,15 +1,20 @@
 <template>
     <top></top>
-    <search><search>
+    <search></search>
+    <banner></banner>
 </template>
-<style type="text/css"></style>
+<style type="text/css">
+
+</style>
 <script type="text/javascript">
+    import Top from '../common/top'
     import Search from './search'
-    import Top from '../common/top.vue'
+    import Banner from './banner'
     export default {
         components : {
             Search,
-            Top
+            Top,
+            Banner
         }
     }
 </script>

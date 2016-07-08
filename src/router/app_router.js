@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
-
+Vue.config.debug = true
+Vue.config.devtools = true
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
