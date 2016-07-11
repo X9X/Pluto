@@ -915,6 +915,7 @@
             </div>
         </div>
     </div>
+    <pagination></pagination>
 </template>
 <style scoped>
     .result-box{
@@ -1116,9 +1117,13 @@
     }
 </style>
 <script >
+    import Pagination from "./pagination"
     export default {
         data (){
             return {}
+        },
+        components:{
+            Pagination
         }
     }
 </script>
