@@ -2,6 +2,7 @@
     <top></top>
     <search></search>
     <banner></banner>
+    <search-result></search-result>
     <foot></foot>
 </template>
 <style type="text/css">
@@ -12,12 +13,14 @@
     import Search from './search'
     import Banner from './banner'
     import Foot from '../common/foot'
+    import SearchResult from './searchResult'
     export default {
         components : {
             Search,
             Top,
             Banner,
-            Foot
+            Foot,
+            SearchResult
         }
     }
 </script>
