@@ -1,4 +1,5 @@
 <template>
+    <button-filters></button-filters>
     <div class="result-box">
         <div class="main-box clear" mod-id="lj-ershoufang-list" id="matchid">
             <div class="con-box">
@@ -1118,12 +1119,14 @@
 </style>
 <script >
     import Pagination from "./pagination"
+    import ButtonFilters from "./buttonFilters"
     export default {
         data (){
             return {}
         },
         components:{
-            Pagination
+            Pagination,
+            ButtonFilters
         }
     }
 </script>
