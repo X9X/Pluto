@@ -9,6 +9,7 @@
             <field name="房型" field="room" :items="conditions.room"></field>
             <field name="总价" field="price" :items="conditions.price"></field>
             <field name="类型" field="pro" :items="conditions.pro"></field>
+            <drop></drop>
         </div>
     </section>
 </template>
@@ -33,6 +34,7 @@
 </style>
 <script type="text/javascript">
 import Field from './field'
+import Drop from './drop'
 export default {
     data (){
         return {
@@ -46,7 +48,8 @@ export default {
         }
     },
     components:{
-        Field
+        Field,
+        Drop
     }
 }
 </script>
