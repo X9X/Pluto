@@ -1,9 +1,9 @@
 <template>
-    <div class="drop-box">
+    <div class="drop-box" @mouseenter="showItems" @mouseleave="hideItems">
         <span class="selected-txt">{{default}}</span>
-        <div class="items-box">
+        <div class="items-box" v-show="show" transition="expand" stagger="100">
             <ul>
-                <li v-for="item in items">{{item}}</li>
+                <li v-for="item in items" @click="setParam(item)">{{item}}</li>
             </ul>
         </div>
     </div>
@@ -28,7 +28,6 @@
         position: absolute;
         top:-3px;
         border-radius: 2px;
-        display: none;
     }
     .drop-box .items-box ul li{
         height: 27px;
@@ -41,14 +40,37 @@
         color:#00ae60;
         text-decoration: underline;
     }
+    /* 必需 */
+    .expand-transition {
+      transition: all .5s ease;
+      overflow: hidden;
+    }
+
+    /* .expand-enter 定义进入的开始状态 */
+    /* .expand-leave 定义离开的结束状态 */
+    .expand-enter, .expand-leave {
+      /*height: 0;*/
+      opacity: 0;
+    }
 </style>
 <script type="text/javascript">
     export default {
         data (){
             return {
-
+                show:false,
             }
         },
-        props:['items','default']
+        props:['items','default','field'],
+        methods:{
+            showItems(){
+                this.show = true;
+            },
+            hideItems(){
+                this.show = false;
+            },
+            setParam(item){
+                console.log(item);
+            }
+        }
     }
 </script>

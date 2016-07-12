@@ -18,7 +18,10 @@ const state = {
     pagination:{
         currentPage:0,
         totalPags:0
-    }
+    },
+    search:null,
+    onlyDiscount:false,
+    searchHistory:null
 }
 
 // mutations

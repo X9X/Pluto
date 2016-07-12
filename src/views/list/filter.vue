@@ -13,8 +13,8 @@
                 <span class="filter-name">
                     其他：
                 </span>
-                <drop :items="conditions.salePoint" default="特色不限"></drop>
-                <drop :items="conditions.status" default="状态不限"></drop>
+                <drop :items="conditions.salePoint" default="特色不限" field="salePoint"></drop>
+                <drop :items="conditions.status" default="状态不限" field="status"></drop>
             </div>
         </div>
     </section>
@@ -44,6 +44,7 @@
 <script type="text/javascript">
 import Field from './field'
 import Drop from './drop'
+import VueResource from 'vue-resource'
 export default {
     data (){
         return {
@@ -61,6 +62,9 @@ export default {
     components:{
         Field,
         Drop
+    },
+    created (){
+
     }
 }
 </script>
