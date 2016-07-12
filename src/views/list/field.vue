@@ -2,7 +2,7 @@
     <div class="filter-box">
         <span class="filter-name">{{name}}:</span>
         <span class="filter-items" v-bind:class="isActive(0)">不限</span>
-        <span v-for="item in items" class="filter-items" v-bind:class="isActive($index + 1)">{{item}}</span>
+        <span v-for="item in items" class="filter-items" v-bind:class="isActive($index + 1)" @click="setParam(item,$index + 1)">{{item}}</span>
     </div>
 </template>
 <script>
@@ -10,13 +10,16 @@ export default {
     props : ['items', 'field', 'name'],
     data () {
         return {
-            active : 0
+            active : 0,
         }
     },
     methods:{
         isActive (index) {
             return this.active == index ? ['active'] : [''];
-         }
+        },
+        setParam (item , index){
+            this.active = index;
+        }
     }
 }
 </script>

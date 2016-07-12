@@ -1,6 +1,6 @@
 <template>
     <div class="drop-box" @mouseenter="showItems" @mouseleave="hideItems">
-        <span class="selected-txt">{{default}}</span>
+        <span class="selected-txt" v-bind:class="{'active':active}">{{selectedTxt}}</span>
         <div class="items-box" v-show="show" transition="expand" stagger="100">
             <ul>
                 <li v-for="item in items" @click="setParam(item)">{{item}}</li>
@@ -9,6 +9,9 @@
     </div>
 </template>
 <style type="text/css" scoped>
+    .active{
+        color:#00ae60;
+    }
     .drop-box{
         display: inline-block;
         width:76px;
@@ -16,6 +19,9 @@
         margin-right: 20px;
     }
     .drop-box .selected-txt{
+        display: inline-block;
+        box-sizing: border-box;
+        width: 100%;
         border:1px solid #ddd;
         text-align: center;
         padding: 2px 8px;
@@ -58,6 +64,8 @@
         data (){
             return {
                 show:false,
+                selected:null,
+                active:false
             }
         },
         props:['items','default','field'],
@@ -69,7 +77,14 @@
                 this.show = false;
             },
             setParam(item){
-                console.log(item);
+                this.active = true;
+                this.selected = item;
+                this.hideItems()
+            }
+        },
+        computed:{
+            selectedTxt (){
+                return this.selected ? this.selected : this.default;
             }
         }
     }
