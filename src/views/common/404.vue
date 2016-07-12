@@ -1,6 +1,6 @@
 <template>
     <div id="main">
-        <h1>Unless creepy emptiness was what you were looking for, this place has nothing</h1>
+        <h1>it's empty</h1>
     </div>
 </template>
 <script type="text/javascript">
