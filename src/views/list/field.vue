@@ -23,7 +23,7 @@ export default {
 <style type="text/css" scoped>
     .filter-box{
         width:1000px;
-        margin:5px auto;
+        margin:8px auto;
     }
     span.filter-name{
         font-weight: bold;

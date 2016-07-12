@@ -9,15 +9,20 @@
             <field name="房型" field="room" :items="conditions.room"></field>
             <field name="总价" field="price" :items="conditions.price"></field>
             <field name="类型" field="pro" :items="conditions.pro"></field>
-            <drop></drop>
+            <div class="row">
+                <span class="filter-name">
+                    其他：
+                </span>
+                <drop :items="conditions.salePoint" default="特色不限"></drop>
+                <drop :items="conditions.status" default="状态不限"></drop>
+            </div>
         </div>
     </section>
 </template>
 <style type="text/css" scoped>
     section{
         font-size: 12px;
-        margin-top: 20px;
-        height: 200px;
+        margin: 20px 0;
     }
     .filter-box{
         margin:0 auto;
@@ -29,6 +34,10 @@
         padding:10px 0;
         color:#555555;
         border-bottom: 1px solid #eaeaea;
+    }
+    .filter-box .filter-name{
+        font-weight: bold;
+        margin-right: 8px;
     }
 
 </style>
@@ -43,7 +52,9 @@ export default {
                 metro : ['1号线', '2号线', '3号线', '4号线', '5号线', '6号线', '7号线', '8号线', '9号线', '10号线', '11号线', '12号线', '13号线', '16号线', '17号线', '18号线'],
                 room : ['一室', '二室', '三室', '四室', '五室', '五室以上'],
                 price : ['100万以下', '100-150万', '150-200万', '200-300万', '300-500万', '500-800万', '800-1000万', '1000万以上'],
-                pro : ['住宅', '别墅','商住']
+                pro : ['住宅', '别墅','商住'],
+                salePoint:['特色不限','精装修','近地铁'],
+                status:['状态不限','即将开盘','在售楼盘','售完楼盘']
             }
         }
     },
