@@ -2,7 +2,7 @@
     <div class="activity-container">
         <div class="activity-box">
             <div class="activity" v-for="i in [1,2,3,4]">
-                <a href="">
+                <a v-link="'/404'">
                     <img src="../../assets/404.jpg">
                 </a>
             </div>
@@ -24,12 +24,13 @@
         display: inline-block;
     }
     .activity-container .activity{
+        text-align: center;
         display: inline-block;
     }
     .activity-container .activity-box a img{
         display: inline-block;
         box-sizing: border-box;
-        height: 130px;
+        width: 95%;
     }
 </style>
 <script type="text/javascript">
