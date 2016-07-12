@@ -1,0 +1,5 @@
+export default {
+    SET_ARTICLES : 'SET_ARTICLES',
+    SET_DATE_POINTER : 'SET_DATE_POINTER',
+    SET_THEMES : 'SET_THEMES'
+}

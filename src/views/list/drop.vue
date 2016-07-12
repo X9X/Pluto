@@ -28,7 +28,7 @@
         position: absolute;
         top:-3px;
         border-radius: 2px;
-        /*display: none;*/
+        display: none;
     }
     .drop-box .items-box ul li{
         height: 27px;
