@@ -1,7 +1,7 @@
 <template>
     <div class="filter-box">
         <span class="filter-name">{{name}}:</span>
-        <span class="filter-items" v-bind:class="isActive(0)">不限</span>
+        <span class="filter-items" v-bind:class="isActive(0)" @click="setParam(null,0)">不限</span>
         <span v-for="item in items" class="filter-items" v-bind:class="isActive($index + 1)" @click="setParam(item,$index + 1)">{{item}}</span>
     </div>
 </template>

@@ -3,6 +3,7 @@
         <span class="selected-txt" v-bind:class="{'active':active}">{{selectedTxt}}</span>
         <div class="items-box" v-show="show" transition="expand" stagger="100">
             <ul>
+                <li @click="setParam(null)">{{default}}</li>
                 <li v-for="item in items" @click="setParam(item)">{{item}}</li>
             </ul>
         </div>
@@ -48,7 +49,7 @@
     }
     /* 必需 */
     .expand-transition {
-      transition: all .5s ease;
+      transition: all .3s ease;
       overflow: hidden;
     }
 
@@ -77,7 +78,7 @@
                 this.show = false;
             },
             setParam(item){
-                this.active = true;
+                this.active = !!item;
                 this.selected = item;
                 this.hideItems()
             }
