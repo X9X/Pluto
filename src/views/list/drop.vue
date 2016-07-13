@@ -4,7 +4,7 @@
         <div class="items-box" v-show="show" transition="expand" stagger="100">
             <ul>
                 <li @click="setParam(null)">{{default}}</li>
-                <li v-for="item in items" @click="setParam(item)">{{item}}</li>
+                <li v-for="item in items" @click="setParam(item)">{{item.text}}</li>
             </ul>
         </div>
     </div>

@@ -1,4 +1,6 @@
-export default class CovLocalDB {
+import Vue from 'vue'
+
+export default class LocalStorgeService {
     constructor (name) {
         this.LS = null
         this.name = name
@@ -36,6 +38,23 @@ export default class CovLocalDB {
             return this.data[uri]
         }
         return false
+    }
+}
+
+export default {
+    install (Vue){
+        Vue.filter('join',function(value,separator) {
+            return value.join(separator);
+        });
+        Vue.filter('addUnit',function(value,unit) {
+            if(value instanceof Array){
+                value.forEach(item=>item += unit)
+            }
+            if(value instanceof String){
+                return value + unit;
+            }
+            return ''
+        });
     }
 }
 

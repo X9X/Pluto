@@ -7,79 +7,43 @@
                     <ul id="house-lst" class="house-lst">
                         <li data-index="0" data-id="" v-for="item in searchResult">
                             <div class="pic-panel">
-                                <a target="_blank" href="/detail/jinganfu1"><img test="1" src="http://image1.ljcdn.com//xf-resblock/4f9e0ead-3dcc-4a48-8cec-8a1059495687.jpg.300x200.jpg" data-resblock-id="508779161676925" onerror="this.src='http://cdn.lianjia.com/pc/asset/img/new-version/default_block.png';this.onerror=null;" class="lj-lazy" style="display: inline;"></a>
+                                <a target="_blank" href="/detail/{{item.blockLabe}}"><img  :src="item.slevelImageUrl || 'http://sh.lianjia.com/static/img/new-version/default_block.png'"></a>
                             </div>
                             <div class="info-panel">
                                 <div class="col-1">
                                     <h2>
-                                        <a target="_blank" href="/detail/jinganfu1">静安府</a>
-
-                                            <div class="redTag">
+                                        <a target="_blank" href="/detail/jinganfu1">{{item.nameShow}}</a>
+                                            <div class="redTag" v-if="item.bDiscount">
                                                 <span class="triangle"></span>
-                                                <span class="text">9.9折</span>
+                                                <span class="text">{{item.discountTitle}}</span>
                                                 <span class="point">·</span>
                                             </div>
-
                                     </h2>
                                     <div class="where">
-                            <span class="region" style="position: relative;left: -7pt;">
-                                【<span>闸北&nbsp;永和</span>】平陆路999号（近汶水路）</span>
+                                    <span class="region">
+                                【<span>{{item.districtName}}&nbsp;{{item.bizcircleName}}</span>】{{item.buildAddr}}</span>
                                     </div>
-                                    <div class="area">
-
-
-                                            4居/3居<span>&nbsp;95~135平米
-                                            </span>
-
-
-
+                                    <div class="area"><span>&nbsp;{{block | roomInfo}}平米</span>
                                     </div>
                                     <div class="type">
-
-
-
-                                    <span class="normal-house">
-                                    <span>普通住宅</span>
+                                    <span class="normal-house" v-if="item.blockTag1">
+                                        <span>{{item.blockTag1}}</span>
                                     </span>
-
-
-
-
-
-
-                                    <span class="decorated-house">
-                                    <span>精装修</span>
+                                    <span class="decorated-house" v-if="item.blockTag2">
+                                        <span>{{item.blockTag2}}</span>
                                     </span>
-
-
-
-
-
-
-
-
-
-
-
-
+                                    <span class="car-enough-house" v-if="item.blockTag3">
+                                        <span>{{item.blockTag3}}</span>
+                                    </span>
+                                    <span class="park-house" v-if="item.blockTag4">
+                                        <span>{{item.blockTag4}}</span>
+                                    </span>
                                     </div>
                                 </div>
                                 <div class="col-2">
                                     <div class="price">
                                         <div class="average">
-
-
-
-
-
-
-                                                            均价待定
-
-
-
-
-
-
+                                            {{item.avgPrice}}
                                         </div>
                                         <div class="tehui">
                                             <div class="tehui-info">
@@ -216,7 +180,10 @@
         font-size: 14px;
         width: 100%;
     }
-
+    span.region{
+        position: relative;
+        left: -7pt;
+    }
     .house-lst .area {
         margin-bottom: 24px;
     }
@@ -312,10 +279,14 @@
         vuex: {
             getters: {
                 searchResult: state => {
-                    console.log(state);
                     return state.list.searchResult
                 }
             }
-        }
+        },
+        filters: {
+            roomInfo(block) {
+                return '1'
+            }
+        },
     }
 </script>

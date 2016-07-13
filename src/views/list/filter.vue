@@ -24,8 +24,8 @@
                 <span class="filter-name">
                     其他：
                 </span>
-                <drop :items="conditions.salePoint" default="特色不限" field="salePoint"></drop>
-                <drop :items="conditions.status" default="状态不限" field="status"></drop>
+                <drop :items="conditions.fea" default="特色不限" field="fea"></drop>
+                <drop :items="conditions.sta" default="状态不限" field="sta"></drop>
             </div>
         </div>
     </section>
@@ -96,18 +96,17 @@
 <script type="text/javascript">
 import Field from './field'
 import Drop from './drop'
-import VueResource from 'vue-resource'
 export default {
     data (){
         return {
             conditions : {
-                district : ['浦东', '嘉定', '松江', '宝山' ,'闵行', '青浦', '普陀', '徐汇', '杨浦', '闸北', '黄浦', '奉贤', '长宁', '虹口', '静安', '金山', '崇明', '上海周边'],
-                metro : ['1号线', '2号线', '3号线', '4号线', '5号线', '6号线', '7号线', '8号线', '9号线', '10号线', '11号线', '12号线', '13号线', '16号线', '17号线', '18号线'],
-                room : ['一室', '二室', '三室', '四室', '五室', '五室以上'],
-                price : ['100万以下', '100-150万', '150-200万', '200-300万', '300-500万', '500-800万', '800-1000万', '1000万以上'],
-                pro : ['住宅', '别墅','商住'],
-                salePoint:['精装修','近地铁'],
-                status:['即将开盘','在售楼盘','售完楼盘']
+                district: null,
+                metro: null,
+                sta: null,
+                fea: null,
+                price: null,
+                pro: null,
+                room: null
             }
         }
     },
@@ -116,7 +115,11 @@ export default {
         Drop
     },
     created (){
-
+        this.$http.get('http://localhost:8080/list/ajax/conditions').then((response) => {
+            this.conditions = response.data
+        }, (response) =>{
+            console.error('Ooooops....');
+        })
     }
 }
 </script>
