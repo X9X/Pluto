@@ -1,5 +1,5 @@
 <template>
-    <div class="filter-box">
+    <div class="field-box">
         <span class="filter-name">{{name}}:</span>
         <span class="filter-items" v-bind:class="isActive(0)" @click="setParam(null,0)">不限</span>
         <span v-for="item in items" class="filter-items" v-bind:class="isActive($index + 1)" @click="setParam(item,$index + 1)">{{item}}</span>
@@ -24,7 +24,7 @@ export default {
 }
 </script>
 <style type="text/css" scoped>
-    .filter-box{
+    .field-box{
         width:1000px;
         margin:8px auto;
     }

@@ -8,6 +8,17 @@
             <field name="地铁" field="metro" :items="conditions.metro"></field>
             <field name="房型" field="room" :items="conditions.room"></field>
             <field name="总价" field="price" :items="conditions.price"></field>
+            <div class="custom">
+                <div class="txt-box">
+                    <input type="text" class="txt" name="min_price">
+                </div>
+                &nbsp;-&nbsp;
+                <div class="txt-box">
+                    <input type="text" class="txt" name="max_price">
+                </div>
+                &nbsp;万
+                <input type="button" data-type="price" class="ok" value="确定">
+            </div>
             <field name="类型" field="pro" :items="conditions.pro"></field>
             <div class="row">
                 <span class="filter-name">
@@ -28,6 +39,7 @@
         margin:0 auto;
         width:1000px;
         background-color: #fff;
+        position: relative;
     }
     .filter-box .breadcrumb{
         margin-bottom: 35px;
@@ -39,7 +51,47 @@
         font-weight: bold;
         margin-right: 8px;
     }
-
+    .custom{
+        font-size: 12px;
+        display: inline-block;
+        zoom: 1;
+        position: absolute;
+        right:0;
+        top:146px;
+    }
+    .txt-box {
+        display:inline-block;
+        width: 40px;
+        border: 1px solid #e3e3e3;
+        position: relative;
+        vertical-align: middle;
+        border-radius: 2px;
+    }
+    .txt-box .txt {
+        display: inline-block;
+        border: 0 none;
+        width: 35px;
+        padding: 2px 1px;
+        text-align: center;
+        color: #333;
+        height: 18px;
+        line-height: 18px;
+    }
+    .custom .ok {
+        width: 43px;
+        line-height: 22px;
+        text-align: center;
+        border: 1px solid #b7b7b7;
+        border-radius: 2px;
+        background-color: #fff;
+        cursor: pointer;
+        margin-left: 5px;
+        color: #555;
+        font-size: 12px;
+        vertical-align: middle;
+        height: 24px;
+        box-sizing: border-box;
+    }
 </style>
 <script type="text/javascript">
 import Field from './field'
