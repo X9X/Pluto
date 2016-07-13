@@ -21,6 +21,9 @@
             Banner,
             Foot,
             SearchResult
+        },
+        data (){
+            return {}
         }
     }
 </script>

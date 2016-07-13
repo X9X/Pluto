@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-Vue.config.debug = true
-Vue.config.devtools = true
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
