@@ -19,7 +19,7 @@ const state = {
         currentPage:0,
         totalPags:0
     },
-    searchResult:[1,2,3],
+    searchResult:[],
     searchKeyword:null,
     onlyDiscount:false,
     searchHistory:null

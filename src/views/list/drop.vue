@@ -85,7 +85,7 @@
         },
         computed:{
             selectedTxt (){
-                return this.selected ? this.selected : this.default;
+                return this.selected ? this.selected.text : this.default;
             }
         }
     }

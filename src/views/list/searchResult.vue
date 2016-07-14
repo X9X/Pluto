@@ -23,7 +23,7 @@
                                     <span class="region">
                                 【<span>{{item.districtName}}&nbsp;{{item.bizcircleName}}</span>】{{item.buildAddr}}</span>
                                     </div>
-                                    <div class="area"><span>&nbsp;{{block | roomInfo}}平米</span>
+                                    <div class="area"><span>{{roomInfo(item)}}</span>
                                     </div>
                                     <div class="type">
                                     <span class="normal-house" v-if="item.blockTag1">
@@ -43,14 +43,18 @@
                                 <div class="col-2">
                                     <div class="price">
                                         <div class="average">
-                                            {{item.avgPrice}}
-                                        </div>
-                                        <div class="tehui">
-                                            <div class="tehui-info">
-                                                <div class="tehui-info-content">链家特惠房<span>（3套）</span></div>
-                                                <div class="tehui-top">最高可省50万</div>
-                                            </div>
-                                            <div class="tehui-num">-50%</div>
+                                            <template v-if="item.villaName=='别墅'">
+                                                <template v-if="item.totalPriceMin && item.totalPriceMin">
+                                                    总价 <span class="num">{{item.totalPriceMin}}</span>万/套起
+                                                </template>
+                                                <template v-else>总价待定</template>
+                                            </template>
+                                            <template v-else>
+                                                <template v-if="item.avgPrice">
+                                                    <span class="num">{{item.avgPrice}}</span>元/平
+                                                </template>
+                                                <template v-else>均价待定</template>
+                                            </template>
                                         </div>
                                     </div>
                                 </div>
@@ -206,15 +210,6 @@
         color: #C5A9DD;
         margin-right: 8px;
     }
-    .price .tehui {
-        width: 225px;
-        height: 85px;
-        /*background-image: url("../img/xinfang/favorable.png");*/
-        background-size: 225px 85px;
-        background-repeat: no-repeat;
-        margin-top: 15px;
-        display: none;
-    }
     .redTag .triangle {
         position: absolute;
         right: 0;
@@ -283,10 +278,21 @@
                 }
             }
         },
-        filters: {
-            roomInfo(block) {
-                return '1'
-            }
+        methods:{
+            roomInfo(block){
+                if(block.roomCntSet && block.roomCntSet.length){
+                    let roomCntTxt = block.roomCntSet.map(function(i){
+                        return i+'居';
+                    }).join('/');
+                    roomCntTxt += '  ' + parseInt(block.minArea) + '~' + parseInt(block.maxArea) + '平米';
+                    return roomCntTxt
+                } else {
+                    return '户型未知'
+                }
+            },
+        },
+        computed: {
+
         },
     }
 </script>
