@@ -114,6 +114,7 @@ export default {
         Field,
         Drop
     },
+    // component private data
     created (){
         this.$http.get('http://localhost:8080/list/ajax/conditions').then((response) => {
             this.conditions = response.data

@@ -61,6 +61,7 @@
     }
 </style>
 <script type="text/javascript">
+import {setFilter} from '../../vuex/modules/list/actions'
     export default {
         data (){
             return {
@@ -78,14 +79,24 @@
                 this.show = false;
             },
             setParam(item){
+                let param = {
+                    key:this.field,
+                    value: (item ? item.value : null)
+                }
                 this.active = !!item;
                 this.selected = item;
-                this.hideItems()
+                this.setFilter(param);
+                this.hideItems();
             }
         },
         computed:{
             selectedTxt (){
                 return this.selected ? this.selected.text : this.default;
+            }
+        },
+        vuex : {
+            actions:{
+                setFilter
             }
         }
     }

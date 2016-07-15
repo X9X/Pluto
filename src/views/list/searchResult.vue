@@ -67,6 +67,38 @@
     </div>
     <pagination></pagination>
 </template>
+<script >
+    import Pagination from "./pagination"
+    import ButtonFilters from "./buttonFilters"
+    export default {
+        data (){
+            return {}
+        },
+        components:{
+            Pagination,
+            ButtonFilters
+        },
+        vuex: {
+            getters: {
+                searchResult: state => state.list.searchResult
+            }
+        },
+        methods:{
+            roomInfo(block){
+                if(block.roomCntSet && block.roomCntSet.length){
+                    let roomCntTxt = block.roomCntSet.map(i=>i+'居').join('/');
+                    roomCntTxt += '  ' + parseInt(block.minArea) + '~' + parseInt(block.maxArea) + '平米';
+                    return roomCntTxt
+                } else {
+                    return '户型未知'
+                }
+            },
+        },
+        computed: {
+
+        },
+    }
+</script>
 <style scoped>
     .result-box{
         width: 1000px;
@@ -260,39 +292,4 @@
         vertical-align: -2px;
     }
 </style>
-<script >
-    import Pagination from "./pagination"
-    import ButtonFilters from "./buttonFilters"
-    export default {
-        data (){
-            return {}
-        },
-        components:{
-            Pagination,
-            ButtonFilters
-        },
-        vuex: {
-            getters: {
-                searchResult: state => {
-                    return state.list.searchResult
-                }
-            }
-        },
-        methods:{
-            roomInfo(block){
-                if(block.roomCntSet && block.roomCntSet.length){
-                    let roomCntTxt = block.roomCntSet.map(function(i){
-                        return i+'居';
-                    }).join('/');
-                    roomCntTxt += '  ' + parseInt(block.minArea) + '~' + parseInt(block.maxArea) + '平米';
-                    return roomCntTxt
-                } else {
-                    return '户型未知'
-                }
-            },
-        },
-        computed: {
 
-        },
-    }
-</script>

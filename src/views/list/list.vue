@@ -15,7 +15,7 @@
     import Foot from '../common/foot'
     import SearchResult from './searchResult'
 
-    import  {setSearchResult} from '../../vuex/modules/list/action.js'
+    import  {initData} from '../../vuex/modules/list/actions'
     export default {
         components : {
             Search,
@@ -28,12 +28,7 @@
             return {}
         },
         created () {
-            this.$http.get('http://localhost:8080/list/ajax?limit_count=1000').then((response) => {
-                this.setSearchResult(response.data.data.blockList);
-            }, (response) => {
-                console.error('Oooops...');
-            })
-
+            this.initData();
         },
         vuex:{
             getters: {
@@ -42,7 +37,7 @@
                 filter:state => state.list.filter,
             },
             actions:{
-                setSearchResult
+                initData
             }
         }
     }

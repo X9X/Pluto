@@ -1,6 +1,6 @@
 // import CONST from '../../mutation-types'
-
 // initial state
+import {loadData} from './plugins.js'
 const state = {
     filter:{
         district : null,
@@ -24,19 +24,24 @@ const state = {
     onlyDiscount:false,
     searchHistory:null
 }
-
+const testPlugin = (store) => {
+        store.subscribe((mutation, state) => {
+            console.log('success....');
+        })
+    }
 // mutations
 const mutations = {
     setFilter (state, param) {
-        console.log(state, param);
+        state.filter[param.key] = param.value;
+        console.log('set state done...');
     },
     setSearchResult (state, param) {
-        console.log(state);
         state.searchResult = param;
     }
 }
 
 export default {
     state,
-    mutations
+    mutations,
+    plugins:[testPlugin]
 }

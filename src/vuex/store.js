@@ -4,6 +4,7 @@ import CONST from './mutation-types'
 import index from './modules/index/store'
 import list from './modules/list/store'
 import discovery from './modules/discovery/store'
+
 Vue.use(Vuex)
 
 const state = {
@@ -12,14 +13,8 @@ const state = {
 }
 
 const mutations = {
-    [CONST.SET_ARTICLES] (state, date, arr) {
-
-    },
-    [CONST.SET_DATE_POINTER] (state, value) {
-        state.datePointer = value
-    },
-    [CONST.SET_THEMES] (state, arr) {
-        state.themes = arr
+    testA (state) {
+        state.k = 1;
     }
 }
 
@@ -31,5 +26,5 @@ export default new Vuex.Store({
         index,
         list,
         discovery
-  }
+    }
 })

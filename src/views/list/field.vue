@@ -6,6 +6,7 @@
     </div>
 </template>
 <script>
+import {setFilter} from '../../vuex/modules/list/actions'
 export default {
     props : ['items', 'field', 'name'],
     data () {
@@ -18,7 +19,20 @@ export default {
             return this.active == index ? ['active'] : [''];
         },
         setParam (item , index){
+            let param = {
+                key:this.field,
+                value: (item ? item.value :null)
+            }
             this.active = index;
+            this.setFilter(param);
+        }
+    },
+    vuex:{
+        getters:{
+
+        },
+        actions:{
+            setFilter,
         }
     }
 }
