@@ -35,14 +35,23 @@ const state = {
 const mutations = {
     setFilterValue (state, param) {
         state.filterValue[param.key] = param.value;
-        console.log('set state done...');
     },
     setFilterTxt (state, param) {
         state.filterTxt[param.key] = param.value;
-        console.log('set state done...');
+    },
+    clearFilterValue (state, param) {
+        state.filterValue[param.key] = null;
+    },
+    clearFilterTxt (state, param) {
+        state.filterTxt[param.key] = null;
     },
     setSearchResult (state, param) {
         state.searchResult = param;
+    },
+    setPagination (state, current, total){
+        console.log(state);
+        state.pagination.totalPags = current
+        state.pagination.totalPags = total
     }
 }
 

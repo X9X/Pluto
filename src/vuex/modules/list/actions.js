@@ -8,12 +8,19 @@ export const setFilter = ({ dispatch, state}, param) => {
     dispatch('setFilterValue',param)
     dispatch('setFilterTxt',param)
 }
+export const clearFilter = ({ dispatch, state}, param) => {
+    loadData({ dispatch, state}, {[param.key]:param.value})
+    dispatch('clearFilterValue',param)
+    dispatch('clearFilterTxt',param)
+}
 export const setSearchResult = ({ dispatch }, param) =>{
     dispatch('setSearchResult',param)
 }
 export const initData = ({ dispatch}) => {
-    Vue.http.get('http://localhost:8080/list/ajax?limit_count=1000').then((response) => {
+    Vue.http.get('http://localhost:8080/list/ajax').then((response) => {
         dispatch('setSearchResult',response.data.data.blockList);
+        console.log(response);
+        dispatch('setPagination',response.data.data.totalPage,response.data.data.totalPage);
     }, (response) => {
         console.error('Oooops...');
     })

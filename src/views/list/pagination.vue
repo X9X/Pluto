@@ -1,12 +1,9 @@
 <template>
     <div class="pagination-box">
-        <div class="page-box house-lst-page-box" comp-module="page" page-url="/list/pg{page}" page-data="{&quot;totalPage&quot;:72,&quot;curPage&quot;:1}">
-            <a class="on" href="/list/pg1" data-page="1">1</a>
-            <a href="/list/pg2" data-page="2">2</a>
-            <a href="/list/pg3" data-page="3">3</a>
-            <span>...</span>
-            <a href="/list/pg72" data-page="72">72</a>
-            <a href="/list/pg2" data-page="2">下一页</a>
+        <div class="page-box house-lst-page-box">
+            <a href="javascript:0" data-page="2" @click="setPage('pre')">上一页</a>
+            <a v-bind:class="isCurrent($index)" href="javascript:0;" v-for="page in pages" @click="setPage(page)">{{page}}</a>
+            <a href="javascript:0" data-page="2" @click="setPage('next')">下一页</a>
         </div>
     </div>
 </template>
@@ -55,7 +52,40 @@
 <script>
     export default {
         data (){
-            return {}
+            return {
+                current:1,
+            }
+        },
+        vuex:{
+            getters:{
+                pages : state => {
+                    let totalPage = state.list.pagination.totalPags;
+                    let pages = new Array(totalPage);
+                    for(let i=0;i<pages.length;i++){
+                        pages[i] = (i+1)
+                    }
+                    return pages
+                },
+                total: state => state.list.pagination.totalPags
+            }
+        },
+        methods:{
+            isCurrent (index) {
+                return (index+1) == this.current ? ['on'] : []
+            },
+            setPage (param) {
+                if(isNaN(param)){
+                    switch(param) {
+                        case 'pre' :
+                            this.current = (this.current - 1) == 0 ? 1 : this.current -1;
+                            break;
+                        case 'next':
+                            this.current = (this.current + 1 ) > this.total ? this.total : this.current +1;
+                    }
+                } else {
+                    this.current = param
+                }
+            }
         }
     }
 </script>

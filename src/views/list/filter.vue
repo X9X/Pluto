@@ -28,56 +28,13 @@
                 <drop :items="conditions.sta" default="状态不限" field="sta"></drop>
             </div>
             <div class="choice"><span class="choice-head">已选条件：</span>
-
-
-                    <span><a class="choice-item" href="">
-                        <span class="choice-name">7号线</span>
-
-
-
-                                <i data-url="/list/zhabei/price2room6" class="statusRemove">×</i></a>
-
-
-                    </span>
-
-
-
-                    <span><a class="choice-item" href="">
+                <span>
+                    <a class="choice-item" href="javascript:0;">
                         <span class="choice-name">100-150万</span>
-
-
-
-                                <i data-url="/list/zhabei/metro7room6" class="statusRemove">×</i></a>
-
-
-                    </span>
-
-
-
-                    <span><a class="choice-item" href="">
-                        <span class="choice-name">闸北</span>
-
-
-
-                                <i data-url="/list/metro7price2room6" class="statusRemove">×</i></a>
-
-
-                    </span>
-
-
-
-                    <span><a class="choice-item" href="">
-                        <span class="choice-name">五室以上</span>
-
-
-
-                                <i data-url="/list/zhabei/metro7price2" class="statusRemove">×</i></a>
-
-
-                    </span>
-
-
-                <a class="clear-choice" href="/list"><i class="delete-icon"></i>清空所有</a>
+                        <i data-url="/list/zhabei/metro7room6" class="statusRemove" @click="clearFilter()">×</i>
+                    </a>
+                </span>
+                <a class="clear-choice" href="javascript:0"><i class="delete-icon" @click="clearAll()"></i>清空所有</a>
             </div>
         </div>
     </section>
@@ -205,6 +162,14 @@ export default {
                 pro: null,
                 room: null
             }
+        }
+    },
+    methods:{
+        clearFilter (param) {
+
+        },
+        clearAll () {
+
         }
     },
     components:{
