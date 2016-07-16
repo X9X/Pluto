@@ -27,6 +27,58 @@
                 <drop :items="conditions.fea" default="特色不限" field="fea"></drop>
                 <drop :items="conditions.sta" default="状态不限" field="sta"></drop>
             </div>
+            <div class="choice"><span class="choice-head">已选条件：</span>
+
+
+                    <span><a class="choice-item" href="">
+                        <span class="choice-name">7号线</span>
+
+
+
+                                <i data-url="/list/zhabei/price2room6" class="statusRemove">×</i></a>
+
+
+                    </span>
+
+
+
+                    <span><a class="choice-item" href="">
+                        <span class="choice-name">100-150万</span>
+
+
+
+                                <i data-url="/list/zhabei/metro7room6" class="statusRemove">×</i></a>
+
+
+                    </span>
+
+
+
+                    <span><a class="choice-item" href="">
+                        <span class="choice-name">闸北</span>
+
+
+
+                                <i data-url="/list/metro7price2room6" class="statusRemove">×</i></a>
+
+
+                    </span>
+
+
+
+                    <span><a class="choice-item" href="">
+                        <span class="choice-name">五室以上</span>
+
+
+
+                                <i data-url="/list/zhabei/metro7price2" class="statusRemove">×</i></a>
+
+
+                    </span>
+
+
+                <a class="clear-choice" href="/list"><i class="delete-icon"></i>清空所有</a>
+            </div>
         </div>
     </section>
 </template>
@@ -91,6 +143,51 @@
         vertical-align: middle;
         height: 24px;
         box-sizing: border-box;
+    }
+    .choice {
+        width: 1000px;
+        height: 43px;
+        line-height: 43px;
+        background-color: #f5f5f5;
+        font-size: 12px;
+        margin: 35px auto;
+    }
+    .choice-head {
+        font-weight: 700;
+        margin: 0 20px;
+    }
+    .choice, .clear-choice {
+        color: #333;
+    }
+    .choice-item:last-child {
+        margin-right: 20px;
+    }
+    .choice-item {
+        margin-right: 13px;
+        height: 18px;
+        font-size: 0;
+        color: #333;
+    }
+    .choice-name {
+        border: 1px solid #dfdfdf;
+        height: 16px;
+        line-height: 16px;
+        background-color: #fff;
+        padding: 0 5px;
+        display: inline-block;
+        font-size: 12px;
+    }
+    .choice-item i {
+        display: inline-block;
+        height: 18px;
+        line-height: 18px;
+        color: #fff;
+        font-weight: 700;
+        background-color: #dfdfdf;
+        width: 18px;
+        text-align: center;
+        font-size: 12px;
+        font-style: normal;
     }
 </style>
 <script type="text/javascript">
