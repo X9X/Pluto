@@ -81,7 +81,7 @@ import {setFilter} from '../../vuex/modules/list/actions'
             setParam(item){
                 let param = {
                     key:this.field,
-                    value: (item ? item.value : null)
+                    value: (item ? item : null)
                 }
                 this.active = !!item;
                 this.selected = item;

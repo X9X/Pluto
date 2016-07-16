@@ -4,17 +4,12 @@ import {urlExtend} from './../../../util/util.js'
 Vue.use(VueResource)
 
 export const setFilter = ({ dispatch, state}, param) => {
-    loadData({ dispatch, state}, {[param.key]:param.value})
-    dispatch('setFilterValue',param)
-    dispatch('setFilterTxt',param)
-}
-export const clearFilter = ({ dispatch, state}, param) => {
-    loadData({ dispatch, state}, {[param.key]:param.value})
-    dispatch('clearFilterValue',param)
-    dispatch('clearFilterTxt',param)
-}
-export const setSearchResult = ({ dispatch }, param) =>{
-    dispatch('setSearchResult',param)
+    let filter = {
+        [param.key] : param.value ? param.value.value : null
+    }
+    loadData({ dispatch, state}, filter)
+    dispatch('setFilterValue', filter)
+    dispatch('setFilterTxt', filter)
 }
 export const initData = ({ dispatch}) => {
     Vue.http.get('http://localhost:8080/list/ajax').then((response) => {

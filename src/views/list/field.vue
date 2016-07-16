@@ -21,7 +21,7 @@ export default {
         setParam (item , index){
             let param = {
                 key:this.field,
-                value: (item ? item.value :null)
+                value: (item ? item : null)
             }
             this.active = index;
             this.setFilter(param);

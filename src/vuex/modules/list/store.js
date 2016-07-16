@@ -9,15 +9,6 @@ const state = {
         fea : null,
         sta : null,
     },
-    filterTxt:{
-        district : null,
-        metro : null,
-        room : null,
-        price : null,
-        pro : null,
-        fea : null,
-        sta : null,
-    },
     order:{
         key:'default',
         value:'asc'
@@ -34,10 +25,7 @@ const state = {
 // mutations
 const mutations = {
     setFilterValue (state, param) {
-        state.filterValue[param.key] = param.value;
-    },
-    setFilterTxt (state, param) {
-        state.filterTxt[param.key] = param.value;
+        Object.assign(state.filterValue,param)
     },
     clearFilterValue (state, param) {
         state.filterValue[param.key] = null;
