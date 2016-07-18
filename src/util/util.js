@@ -1,7 +1,7 @@
 export const urlExtend = (url,param)=>{
     for ( let k in param){
         if(param[k]){
-            url += '&'+k+'=' + param[k]
+            url += '&'+k+'=' + param[k].value
         }
     }
     return url

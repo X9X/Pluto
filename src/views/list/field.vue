@@ -1,12 +1,13 @@
 <template>
     <div class="field-box">
         <span class="filter-name">{{name}}:</span>
-        <span class="filter-items" v-bind:class="isActive(0)" @click="setParam(null,0)">不限</span>
-        <span v-for="item in items" class="filter-items" v-bind:class="isActive($index + 1)" @click="setParam(item,$index + 1)">{{item.text}}</span>
+        <span class="filter-items" v-bind:class="isActive(null)" @click="setParam(null,0)">不限</span>
+        <span v-for="item in items" class="filter-items" v-bind:class="isActive(item.value)" @click="setParam(item,$index + 1)">{{item.text}}</span>
     </div>
 </template>
 <script>
 import {setFilter} from '../../vuex/modules/list/actions'
+import { filter } from '../../vuex/modules/list/getters'
 export default {
     props : ['items', 'field', 'name'],
     data () {
@@ -15,13 +16,14 @@ export default {
         }
     },
     methods:{
-        isActive (index) {
-            return this.active == index ? ['active'] : [''];
+        isActive (val) {
+            let seleted = this.filter[this.field] ? this.filter[this.field].value : null
+            return  seleted == val ? ['active'] : [''];
         },
         setParam (item , index){
             let param = {
                 key:this.field,
-                value: (item ? item : null)
+                value: item
             }
             this.active = index;
             this.setFilter(param);
@@ -29,7 +31,7 @@ export default {
     },
     vuex:{
         getters:{
-
+            filter
         },
         actions:{
             setFilter,

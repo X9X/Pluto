@@ -2,12 +2,12 @@
     <div class="pagination-box">
         <div class="page-box house-lst-page-box">
             <a href="javascript:0" data-page="2" @click="setPage('pre')">上一页</a>
-            <a v-bind:class="isCurrent($index)" href="javascript:0;" v-for="page in pages" @click="setPage(page)">{{page}}</a>
+            <a v-bind:class="isCurrent(page)" href="javascript:0;" v-for="page in pages" @click="setPage(page)">{{page}}</a>
             <a href="javascript:0" data-page="2" @click="setPage('next')">下一页</a>
         </div>
     </div>
 </template>
-<style type="text/css" scoped>
+<style type="text/css" scoped lang="scss">
     .pagination-box{
         width: 1000px;
         margin: 0 auto;
@@ -50,40 +50,48 @@
     }
 </style>
 <script>
+    import { setCurrentPage } from '../../vuex/modules/list/actions.js'
     export default {
         data (){
-            return {
-                current:1,
-            }
+            return {}
         },
         vuex:{
             getters:{
                 pages : state => {
-                    let totalPage = state.list.pagination.totalPags;
-                    let pages = new Array(totalPage);
-                    for(let i=0;i<pages.length;i++){
-                        pages[i] = (i+1)
+                    let totalPage = state.list.pagination.totalPage;
+                    let pages = [];
+                    console.log(totalPage);
+                    for(let i=0;i<totalPage;i++){
+                        pages.push(i+1)
                     }
                     return pages
                 },
-                total: state => state.list.pagination.totalPags
+                total: state => state.list.pagination.totalPage,
+                current: state => state.list.pagination.currentPage
+            },
+            actions:{
+                setCurrentPage
             }
         },
         methods:{
-            isCurrent (index) {
-                return (index+1) == this.current ? ['on'] : []
+            isCurrent (page) {
+                return  page == this.current ? ['on'] : []
             },
             setPage (param) {
+                // console.log(param);
+                let to
                 if(isNaN(param)){
                     switch(param) {
                         case 'pre' :
-                            this.current = (this.current - 1) == 0 ? 1 : this.current -1;
+                            to = (this.current - 1) == 0 ? 1 : this.current -1;
+                            this.setCurrentPage(to);
                             break;
                         case 'next':
-                            this.current = (this.current + 1 ) > this.total ? this.total : this.current +1;
+                            to = (this.current + 1 ) > this.total ? this.total : this.current +1;
+                            this.setCurrentPage(to);
                     }
                 } else {
-                    this.current = param
+                    this.setCurrentPage(param)
                 }
             }
         }

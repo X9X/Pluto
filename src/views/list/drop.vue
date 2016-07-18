@@ -9,7 +9,7 @@
         </div>
     </div>
 </template>
-<style type="text/css" scoped>
+<style type="text/css" scoped lang="scss">
     .active{
         color:#00ae60;
     }
@@ -62,12 +62,12 @@
 </style>
 <script type="text/javascript">
 import {setFilter} from '../../vuex/modules/list/actions'
+import { filter } from '../../vuex/modules/list/getters'
+
     export default {
         data (){
             return {
-                show:false,
-                selected:null,
-                active:false
+                show:false
             }
         },
         props:['items','default','field'],
@@ -83,20 +83,26 @@ import {setFilter} from '../../vuex/modules/list/actions'
                     key:this.field,
                     value: (item ? item : null)
                 }
-                this.active = !!item;
-                this.selected = item;
                 this.setFilter(param);
                 this.hideItems();
             }
         },
         computed:{
             selectedTxt (){
-                return this.selected ? this.selected.text : this.default;
+                let selected = this.filter[this.field] ? this.filter[this.field] : null
+                return selected ? selected.text : this.default;
+            },
+            active () {
+                let selected = this.filter[this.field] ? this.filter[this.field] : null
+                return !!selected
             }
         },
         vuex : {
             actions:{
                 setFilter
+            },
+            getters : {
+                filter
             }
         }
     }

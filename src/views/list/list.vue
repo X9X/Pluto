@@ -1,11 +1,11 @@
-<template>
-    <top></top>
-    <search></search>
-    <banner></banner>
-    <search-result></search-result>
-    <foot></foot>
+<template lang="jade">
+    top
+    search
+    banner
+    search-result
+    foot
 </template>
-<style type="text/css">
+<style>
 
 </style>
 <script type="text/javascript">
@@ -15,7 +15,7 @@
     import Foot from '../common/foot'
     import SearchResult from './searchResult'
 
-    import  {initData} from '../../vuex/modules/list/actions'
+    import  {loadData} from '../../vuex/modules/list/actions'
     export default {
         components : {
             Search,
@@ -28,7 +28,7 @@
             return {}
         },
         created () {
-            this.initData();
+            this.loadData();
         },
         vuex:{
             getters: {
@@ -37,7 +37,7 @@
                 filter:state => state.list.filter,
             },
             actions:{
-                initData
+                loadData
             }
         }
     }

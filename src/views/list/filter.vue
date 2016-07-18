@@ -30,11 +30,11 @@
             <div class="choice" v-show="filterTxt.length"><span class="choice-head">已选条件：</span>
                 <span>
                     <a class="choice-item" href="javascript:0;" v-for="txt in filterTxt">
-                        <span class="choice-name">{{txt}}</span>
-                        <i class="statusRemove" @click="clearFilter()">×</i>
+                        <span class="choice-name">{{txt.text}}</span>
+                        <i class="statusRemove" @click="clearFilter(txt)">×</i>
                     </a>
                 </span>
-                <a class="clear-choice" href="javascript:0"><i class="delete-icon" @click="clearAll()"></i>清空所有</a>
+                <a class="clear-choice" href="javascript:0"  @click="clearAll()">清空所有</a>
             </div>
         </div>
     </section>
@@ -120,7 +120,7 @@
         margin-right: 20px;
     }
     .choice-item {
-        margin-right: 13px;
+        margin-right: 25px;
         height: 18px;
         font-size: 0;
         color: #333;
@@ -150,6 +150,7 @@
 <script type="text/javascript">
 import Field from './field'
 import Drop from './drop'
+import {clearFilter,clearAll} from '../../vuex/modules/list/actions.js'
 export default {
     data (){
         return {
@@ -165,12 +166,6 @@ export default {
         }
     },
     methods:{
-        clearFilter (param) {
-
-        },
-        clearAll () {
-
-        }
     },
     components:{
         Field,
@@ -186,7 +181,21 @@ export default {
     },
     vuex:{
         getters:{
-            filterTxt : (state) => state.list.filterTxt}
+            filterTxt : (state) => {
+                let filter = state.list.filter
+                let filterTxt = []
+                for(let k in filter){
+                    if(filter[k]){
+                        filterTxt.push({field:filter[k].key,text:filter[k].text})
+                    }
+                }
+                return filterTxt
+            }
+        },
+        actions:{
+            clearFilter,
+            clearAll
+        }
     }
 }
 </script>
