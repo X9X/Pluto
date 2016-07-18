@@ -12,13 +12,8 @@ const initFilter = {
         pro : null,
         fea : null,
         sta : null,
-        discount:null,
         bp:null,
-        ep:null,
-        date:null,
-        p:null,
-        pg:null,
-        search:null
+        ep:null
     }
 
 export const setFilter = ({ dispatch, state}, param) => {
@@ -50,13 +45,6 @@ export const clearFilter = ({ dispatch, state}, param) => {
     }
     setFilter({dispatch, state}, filter)
 }
-export const setOrder = ({ dispatch, state}, param) => {
-    let filter = {
-        key : param.field,
-        value : null
-    }
-    setFilter({dispatch, state}, filter)
-}
 
 //cleaer all filters
 export const clearAll = ({dispatch,state}) => {
@@ -71,6 +59,21 @@ export const setCurrentPage = ({dispatch,state}, param) => {
     }
     loadData({dispatch,state},pg)
 }
-export const setFilterOrder = ({dispatch, state}, param) => {
-
+export const setOrder = ({dispatch,state}, param) => {
+    let order;
+    dispatch('setOrder',param)
+    if(param.key=='default'){
+        order = {
+            p:null,
+            date:null
+        }
+    } else {
+        order = {
+            [param.key]:{value:param.value}
+        }
+    }
+    loadData({dispatch,state},order)
+}
+export const setDiscount = ({dispatch,state}, param) => {
+    console.log(param);
 }

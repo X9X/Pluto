@@ -13,13 +13,13 @@
             </div>
             <span class="order">
                 <div>
-                    <a v-bind:class="{'default-order': !p && !date}" href="javascript:0">默认排序</a>
+                    <a v-bind:class="{'default-order': !order.p&&!order.date }" href="javascript:0" @click="setOrderFilter('default')">默认排序</a>
                 </div>
                 <div>
-                    <a href="javascript:0" v-bind:class="{'default-order': p}" @click="setOrder('p')">按均价排序</a>
+                    <a href="javascript:0" v-bind:class="{'default-order': order.p}" @click="setOrderFilter('p')">按均价排序</a>
                 </div>
                 <div>
-                    <a href="javascript:0" v-bind:class="{'default-order': date}" @click="setOrder('date')">开盘时间</a>
+                    <a href="javascript:0" v-bind:class="{'default-order': order.date}" @click="setOrderFilter('date')">开盘时间</a>
                 </div>
             </span>
         </div>
@@ -107,28 +107,30 @@
     }
 </style>
 <script>
-    import { setFilterOrder } from '../../vuex/modules/list/actions.js'
+    import { setOrder } from '../../vuex/modules/list/actions.js'
+    import { setDiscount } from '../../vuex/modules/list/actions.js'
     export default {
         data(){
             return {}
         },
         vuex:{
             getters:{
-                field : (state) => state.list.filter.discount,
-                order: (state) => state.list.
+                discount : (state) => state.list.discount,
+                order: (state) => state.list.order
             },
             actions:{
-                setFilterOrder
+                setOrder,
+                setDiscount
             }
         },
         methods:{
-            setOrder(field) {
-                let val =  this[field] ?  (this[field] == 'asc' ? 'desc' : 'asc') : 'asc'
+            setOrderFilter(field) {
+                let val = this.order[field] ? ( this.order[field] == 'asc' ? 'desc' : 'asc') : 'asc'
                 let param = {
                     key: field,
                     value:val
                 }
-                this.setFilterOrder(param)
+                this.setOrder(param)
             }
         }
     }

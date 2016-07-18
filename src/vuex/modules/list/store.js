@@ -8,16 +8,14 @@ const state = {
         pro : null,
         fea : null,
         sta : null,
-        discount:null,
         bp:null,
-        ep:null,
-        pg:null,
-        search:null
+        ep:null
     },
     order:{
         p:null,
         date:null
     },
+    discount:null,
     pagination:{
         currentPage:0,
         totalPage:0
@@ -37,8 +35,9 @@ const mutations = {
         state.pagination.totalPage = param.totalPage
         state.pagination.currentPage = param.currentPage
     },
-    setOrder ( state, order){
-
+    setOrder (state, param){console.log(param);
+        state.order.p = (param.key == 'p' ? param.value : null)
+        state.order.date = (param.key == 'date' ? param.value : null)
     }
 }
 
