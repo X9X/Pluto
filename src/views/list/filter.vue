@@ -17,7 +17,7 @@
                     <input type="text" class="txt" name="max_price">
                 </div>
                 &nbsp;万
-                <input type="button" data-type="price" class="ok" value="确定">
+                <input type="button" data-type="price" class="ok" value="确定" v-show="bp && ep">
             </div>
             <field name="类型" field="pro" :items="conditions.pro"></field>
             <div class="row">
@@ -190,7 +190,9 @@ export default {
                     }
                 }
                 return filterTxt
-            }
+            },
+            bp:(state) => state.list.filter.bp,
+            ep:(state) => state.list.filter.ep,
         },
         actions:{
             clearFilter,

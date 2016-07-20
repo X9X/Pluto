@@ -36,8 +36,8 @@ const mutations = {
         state.pagination.currentPage = param.currentPage
     },
     setOrder (state, param){console.log(param);
-        state.order.p = (param.key == 'p' ? param.value : null)
-        state.order.date = (param.key == 'date' ? param.value : null)
+        state.order.p = (param.key == 'p' ? param : null)
+        state.order.date = (param.key == 'date' ? param : null)
     }
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="pagination-box">
+    <div class="pagination-box" v-show="total">
         <div class="page-box house-lst-page-box">
             <a href="javascript:0" data-page="2" @click="setPage('pre')">上一页</a>
             <a v-bind:class="isCurrent(page)" href="javascript:0;" v-for="page in pages" @click="setPage(page)">{{page}}</a>

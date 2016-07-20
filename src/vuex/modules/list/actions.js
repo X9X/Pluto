@@ -15,6 +15,10 @@ const initFilter = {
         bp:null,
         ep:null
     }
+const initOrder = {
+    p:null,
+    date:null
+}
 
 export const setFilter = ({ dispatch, state}, param) => {
     let filter = {
@@ -22,6 +26,7 @@ export const setFilter = ({ dispatch, state}, param) => {
     }
     loadData({ dispatch, state}, filter)
     dispatch('setFilter', filter)
+    dispatch('setOrder', initOrder)
 }
 
 //update data from back-end
@@ -44,12 +49,14 @@ export const clearFilter = ({ dispatch, state}, param) => {
         value : null
     }
     setFilter({dispatch, state}, filter)
+    dispatch('setOrder', initOrder)
 }
 
 //cleaer all filters
 export const clearAll = ({dispatch,state}) => {
     loadData({ dispatch, state},initFilter)
     dispatch('setFilter', initFilter)
+    dispatch('setOrder', initOrder)
 }
 
 //set current page
@@ -57,7 +64,10 @@ export const setCurrentPage = ({dispatch,state}, param) => {
     let pg = {
         pg:{value:param}
     }
-    loadData({dispatch,state},pg)
+    let order = state.list.order
+    let hh = Object.assign({},pg,order)
+    console.log(hh);
+    loadData({dispatch,state},hh)
 }
 export const setOrder = ({dispatch,state}, param) => {
     let order;

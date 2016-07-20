@@ -26,5 +26,6 @@ export default new Vuex.Store({
         index,
         list,
         discovery
-    }
+    },
+    // plugins:[]
 })
