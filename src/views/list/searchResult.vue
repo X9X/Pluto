@@ -99,7 +99,7 @@
         },
     }
 </script>
-<style scoped>
+<style scoped lang="scss">
     .result-box{
         width: 1000px;
         margin:0 auto;
