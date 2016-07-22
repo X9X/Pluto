@@ -9,7 +9,6 @@ import router from './router/app_router'
 import store from './vuex/store'
 Vue.use(VueRouter)
 Vue.use(VueResource)
-Vue.use(VueRouter)
 Vue.use(Vuex)
 
 Vue.config.debug = process.env.NODE_ENV === 'dev'
