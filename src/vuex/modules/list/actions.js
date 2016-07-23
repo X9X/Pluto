@@ -72,7 +72,7 @@ export const setCurrentPage = ({dispatch,state}, param) => {
 export const setOrder = ({dispatch,state}, param) => {
     let order;
     dispatch('setOrder',param)
-    if(param.key=='default'){
+    if(param.key==='default'){
         order = {
             p:null,
             date:null

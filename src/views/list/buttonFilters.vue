@@ -107,8 +107,7 @@
     }
 </style>
 <script>
-    import { setOrder } from '../../vuex/modules/list/actions.js'
-    import { setDiscount } from '../../vuex/modules/list/actions.js'
+    import { setOrder, setDiscount } from '../../vuex/modules/list/actions.js'
     export default {
         data(){
             return {}
