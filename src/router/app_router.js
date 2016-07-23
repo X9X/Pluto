@@ -29,6 +29,11 @@ router.map({
         component : (resolve) => {
             require(['../views/common/404.vue'],resolve)
         }
+    },
+    '/discovery' : {
+        component : (resolve) => {
+            require(['../views/discovery/discovery.vue'],resolve)
+        }
     }
 });
 
