@@ -12,10 +12,12 @@ Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
+
 Vue.config.debug = process.env.NODE_ENV === 'dev'
 
 Vue.config.devtools = true
 
 sync(store, router)
+
 
 router.start(App, 'index')
